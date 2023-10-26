@@ -1,5 +1,16 @@
 /*FONTS*/
 @import url(https://fonts.googleapis.com/css2?family=Oxygen:wght@400;700&family=Viga&display=swap);
+/*COLORS*/
+$wit: #fff;
+$txt: #E6EDF3;
+$button-txt: #C9D1D9;
+$meta-txt: #7D8590;
+$magenta: #ff28ff;
+$roze: #B557F5;
+$zwart: #000;
+$achtergrond-zwart: #010409;
+$panel-zwart: #0d1117;
+$button-zwart: #21262d;
 /*ALGEMEEN*/
 * {
 	box-sizing: border-box;
@@ -8,31 +19,101 @@
 }
 body {
 	min-height: 100vh;
+	background-color: $achtergrond-zwart;
 }
-h1 {
+h1, h2, h3, h4, h5, h6, th {
 	font-family: 'Viga', sans-serif;
+	color: $txt;
 }
-h2 {
-	font-family: 'Viga', sans-serif;
-}
-h3 {
-	font-family: 'Viga', sans-serif;
-}
-p {
+label, input, textarea, a, p{
 	font-family: 'Oxygen', sans-serif;
+	color: $txt;
 }
-th {
-	font-family: 'Viga', sans-serif;
-}
-label, input, textarea, a {
-	font-family: 'Oxygen', sans-serif;
-}
-/*COLORS*/
-
 /*NAVIGATION*/
 
 /*HEADER*/
-
+nav {
+	background-color: $achtergrond-zwart;
+	height: 70px;
+	border-bottom: 1px solid #30363d;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	gap: 30px;
+	padding-left: 15px;
+	.navbar-left {
+		height: 45px;
+		img {
+			width: 45px;
+			height: 45px;
+			object-fit: cover;
+		}
+	}
+	.navbar-right {
+		width: 50%;
+		ul {
+			list-style-type: none;
+			display: flex;
+    gap: 30px;
+			li {
+				a {
+					color: $txt;
+					text-decoration: none;
+					font-size: 20px;
+					font-weight: bold;
+					&:hover::after {
+						width: 100%;
+					}
+					&:after {
+						content: "";
+						width: 0%;
+						height: 3px;
+						background: $magenta;
+						display: block;
+						margin: auto;
+						transition: 0.5s;
+					}
+				}
+			}
+		}
+	}
+	.count {
+		position: fixed;
+		top: 20px;
+		right: 20px;
+		z-index: 1;
+		background-color: $roze;
+		color: $txt;
+		border-radius: 50px;
+		width: 30px;
+		height: 30px;
+		display: flex;
+    align-items: center;
+    justify-content: center;
+		font-weight: bold;
+		font-size: 16px;
+	}
+}
 /*MAIN*/
-
+.home-b1 {
+	background-color: $achtergrond-zwart;
+	width: 40vw;
+	margin: 50px auto;
+  h1 {
+		letter-spacing: 1px;
+    font-size: 28px;
+    font-weight: bold;
+    line-height: 30px;
+	}
+	h3 {
+		letter-spacing: 1px;
+    font-size: 18px;
+    font-weight: bold;
+    line-height: 20px;
+	}
+	p {
+		font-size: 16px;
+    line-height: 20px;
+	}
+}
 /*FOOTER*/

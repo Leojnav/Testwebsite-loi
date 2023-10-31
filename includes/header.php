@@ -10,6 +10,6 @@
 <div class=navbar-right>
 <ul>
   <li><a href="index.php">Home</a></li>
-  <li><a href="test.php">Ontwikkelplek</a></li>
+  <li><a href="test.php">Experimentation lab</a></li>
 </ul>
 </div>

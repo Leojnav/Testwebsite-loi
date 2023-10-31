@@ -5,12 +5,15 @@ $wit: #fff;
 $txt: #E6EDF3;
 $button-txt: #C9D1D9;
 $meta-txt: #7D8590;
-$magenta: #ff28ff;
+$magenta: #FF1FFF;
 $roze: #B557F5;
 $zwart: #000;
 $achtergrond-zwart: #010409;
 $panel-zwart: #0d1117;
 $button-zwart: #21262d;
+$border: #707070;
+$button-hover: #30363d;
+$button-border-hover: #8b949e;
 /*ALGEMEEN*/
 * {
 	box-sizing: border-box;
@@ -20,6 +23,7 @@ $button-zwart: #21262d;
 body {
 	min-height: 100vh;
 	background-color: $achtergrond-zwart;
+	color: $txt;
 }
 h1, h2, h3, h4, h5, h6, th {
 	font-family: 'Viga', sans-serif;
@@ -29,13 +33,28 @@ label, input, textarea, a, p{
 	font-family: 'Oxygen', sans-serif;
 	color: $txt;
 }
+p {
+	font-size: 16px;
+	line-height: 20px;
+}
+h1 {
+	letter-spacing: 1px;
+	font-size: 28px;
+	font-weight: bold;
+	line-height: 30px;
+}
+h3 {
+	letter-spacing: 1px;
+	font-size: 18px;
+	font-weight: bold;
+	line-height: 20px;
+}
 /*NAVIGATION*/
 
 /*HEADER*/
 nav {
-	background-color: $achtergrond-zwart;
 	height: 70px;
-	border-bottom: 1px solid #30363d;
+	border-bottom: 1px solid $border;
 	display: flex;
 	flex-direction: row;
 	align-items: center;
@@ -68,7 +87,7 @@ nav {
 						content: "";
 						width: 0%;
 						height: 3px;
-						background: $magenta;
+						background: linear-gradient(90deg, $roze, $magenta 50%, $roze);
 						display: block;
 						margin: auto;
 						transition: 0.5s;
@@ -79,42 +98,48 @@ nav {
 	}
 	.count {
 		position: fixed;
-		top: 20px;
-		right: 20px;
+		top: 10px;
+    right: 15px;
 		z-index: 1;
-		background-color: $roze;
+		background: 
+		linear-gradient(90deg, $roze, $magenta 50%, $roze), /* Horizontal Gradient */
+		linear-gradient(0deg, $roze, $magenta 50%, $roze); 
 		color: $txt;
 		border-radius: 50px;
-		width: 30px;
-		height: 30px;
+		width: 40px;
+		height: 40px;
 		display: flex;
     align-items: center;
     justify-content: center;
 		font-weight: bold;
-		font-size: 16px;
+		font-size: 18px;
 	}
 }
 /*MAIN*/
 .home-b1 {
-	background-color: $achtergrond-zwart;
 	width: 40vw;
 	margin: 50px auto;
-	color: $txt;
-  h1 {
-		letter-spacing: 1px;
-    font-size: 28px;
-    font-weight: bold;
-    line-height: 30px;
+	.col {
+		padding-top: 25px;
+		width: 20%;
+    float: left;
 	}
-	h3 {
-		letter-spacing: 1px;
-    font-size: 18px;
-    font-weight: bold;
-    line-height: 20px;
-	}
-	p {
-		font-size: 16px;
-    line-height: 20px;
+}
+/*BMI*/
+.bmi-b1 {
+	width: 40vw;
+	margin: 50px auto;
+	.uk-button {
+		background-color: $button-zwart;
+		color: $button-txt;
+		border: 1px solid $border;
+		padding: 5px 25px;
+		border-radius: 6px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+		&:hover { 
+			background-color: $button-hover;
+			border: 1px solid $button-border-hover;
+		}
 	}
 }
 /*FOOTER*/

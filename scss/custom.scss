@@ -42,12 +42,14 @@ h1 {
 	font-size: 28px;
 	font-weight: bold;
 	line-height: 30px;
+	padding-bottom: 20px;
 }
 h3 {
 	letter-spacing: 1px;
-	font-size: 18px;
-	font-weight: bold;
+	font-size: 20px;
+	font-weight: 500;
 	line-height: 20px;
+	padding-bottom: 20px;
 }
 /*NAVIGATION*/
 
@@ -129,16 +131,63 @@ nav {
 .bmi-b1 {
 	width: 40vw;
 	margin: 50px auto;
-	.uk-button {
-		background-color: $button-zwart;
-		color: $button-txt;
-		border: 1px solid $border;
-		padding: 5px 25px;
-		border-radius: 6px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-		&:hover { 
-			background-color: $button-hover;
-			border: 1px solid $button-border-hover;
+	&:after {
+    content: "";
+    display: table;
+    clear: both;
+	}
+	.row {
+		display: flex;
+		.col1, .col2 {
+			display: flex;
+			align-items: center;
+		}
+		.col1 {
+			padding-top: 25px;
+			flex-basis: 33%;
+			label span {
+				color: $magenta;
+			}
+			input::-webkit-outer-spin-button,
+			input::-webkit-inner-spin-button,input[type=number] {
+				-webkit-appearance: none;
+				-moz-appearance: textfield;
+			}
+			input {
+				background-color: $button-zwart;
+				border: 1px solid $border;
+				box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+				padding: 5px 12px;
+				font-size: 14px;
+				line-height: 20px;
+				border-radius: 6px;
+				margin-top: 5px;
+				margin-bottom: 10px;
+				&:focus-visible {
+					outline: 1px solid $roze;
+				}
+			}
+			.uk-button {
+				background-color: $button-zwart;
+				color: $button-txt;
+				border: 1px solid $border;
+				padding: 5px 25px;
+				border-radius: 6px;
+				box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+				&:hover { 
+					background-color: $button-hover;
+					border: 1px solid $button-border-hover;
+				}
+			}
+		}
+		.col2 {
+			padding-left: 35px;
+			padding-top: 25px;
+			flex-basis: 66%;
+			ul {
+				color: $magenta;
+				font-size: 22px;
+			}
 		}
 	}
 }

@@ -24,10 +24,10 @@ _END;
 <section class=home-b1>
 <h1>
   <?php echo $pagetitle; ?>
-</h1><br>
+</h1>
 <h3>
   <?php echo "My name is ".$fullname."."; ?>
-</h3><br>
+</h3>
 <p>
   <?php echo "Today i will tell you a little about my self. I am ".$age." years old. And i live in the ".$country.". At home i have ".$pets." And my hobby's are ".$hobby; ?>
 </p>

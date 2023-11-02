@@ -51,6 +51,34 @@ h3 {
 	line-height: 20px;
 	padding-bottom: 20px;
 }
+.row {
+	display: flex;
+	.col .col1-2, .col1-3, .col2-3, .col1-4 {
+		display: flex;
+	}
+	.col {
+		flex-basis: 100%;
+	}
+	.col1-2 {
+		flex-basis: 50%;
+	}
+	.col1-3 {
+		flex-basis: 33.33%;
+	}
+	.col2-3 {
+		flex-basis: 66.66%;
+	}
+	.col1-4 {
+		flex-basis: 25%;
+	}
+}
+section {
+	&:after {
+    content: "";
+    display: table;
+    clear: both;
+	}
+}
 /*NAVIGATION*/
 
 /*HEADER*/
@@ -72,10 +100,11 @@ nav {
 	}
 	.navbar-right {
 		width: 50%;
+		position: relative;
 		ul {
 			list-style-type: none;
 			display: flex;
-    gap: 30px;
+    	gap: 30px;
 			li {
 				a {
 					color: $txt;
@@ -99,8 +128,8 @@ nav {
 		}
 	}
 	.count {
-		position: fixed;
-		top: 10px;
+		position: absolute;
+		top: 15px;
     right: 15px;
 		z-index: 1;
 		background: 
@@ -131,64 +160,57 @@ nav {
 .bmi-b1 {
 	width: 40vw;
 	margin: 50px auto;
-	&:after {
-    content: "";
-    display: table;
-    clear: both;
+	.col p {
+		line-height: 26px;
 	}
-	.row {
-		display: flex;
-		.col1, .col2 {
-			display: flex;
-			align-items: center;
+	.col .col1-3, .col2-3 {
+		align-items: center;
+	}
+	.col1-3 {
+		padding-top: 25px;
+		label span {
+			color: $magenta;
 		}
-		.col1 {
-			padding-top: 25px;
-			flex-basis: 33%;
-			label span {
-				color: $magenta;
-			}
-			input::-webkit-outer-spin-button,
-			input::-webkit-inner-spin-button,input[type=number] {
-				-webkit-appearance: none;
-				-moz-appearance: textfield;
-			}
-			input {
-				background-color: $button-zwart;
-				border: 1px solid $border;
-				box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-				padding: 5px 12px;
-				font-size: 14px;
-				line-height: 20px;
-				border-radius: 6px;
-				margin-top: 5px;
-				margin-bottom: 10px;
-				&:focus-visible {
-					outline: 1px solid $roze;
-				}
-			}
-			.uk-button {
-				background-color: $button-zwart;
-				color: $button-txt;
-				border: 1px solid $border;
-				padding: 5px 25px;
-				border-radius: 6px;
-				box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-				&:hover { 
-					background-color: $button-hover;
-					border: 1px solid $button-border-hover;
-				}
+		input::-webkit-outer-spin-button,
+		input::-webkit-inner-spin-button,input[type=number] {
+			-webkit-appearance: none;
+			-moz-appearance: textfield;
+		}
+		input {
+			background-color: $button-zwart;
+			border: 1px solid $border;
+			box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+			padding: 5px 12px;
+			font-size: 14px;
+			line-height: 20px;
+			border-radius: 6px;
+			margin-top: 5px;
+			margin-bottom: 10px;
+			&:focus-visible {
+				outline: 1px solid $roze;
 			}
 		}
-		.col2 {
-			padding-left: 35px;
-			padding-top: 25px;
-			flex-basis: 66%;
-			ul {
-				color: $magenta;
-				font-size: 22px;
+		.uk-button {
+			background-color: $button-zwart;
+			color: $button-txt;
+			border: 1px solid $border;
+			padding: 5px 25px;
+			border-radius: 6px;
+			box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+			&:hover { 
+				background-color: $button-hover;
+				border: 1px solid $button-border-hover;
 			}
+		}
+	}
+	.col2-3 {
+		padding-left: 35px;
+		padding-top: 25px;
+		ul {
+			color: $magenta;
+			font-size: 22px;
 		}
 	}
 }
+
 /*FOOTER*/

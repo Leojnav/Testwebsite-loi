@@ -1,5 +1,5 @@
 <?php 
-  include 'function.inc.php';
+  require_once 'function.inc.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">

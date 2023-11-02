@@ -4,14 +4,14 @@
 
 <!-- Navbar & Database + other includes -->
 <?php
-	include 'includes/header.php';
+	require_once 'includes/header.php';
 ?>
 
 <section class=bmi-b1>
   <h1>Body Mass Index (BMI) calculator</h1>
   <p>To calculate your BMI you can either put in both your weight and height or only your height.</p>
   <div class='row'>
-    <div class='col1'>
+    <div class='col1-3'>
       <form action="" method="post">
         <label for="weight">Weight in kg:</label><br>
         <input type="number" id="weight" name="weight"><br>
@@ -20,7 +20,7 @@
         <input class="uk-button" type="submit" name="bmi-calculator" value="Submit">
       </form>
     </div>
-    <div class='col2'>
+    <div class='col2-3'>
       <ul>
         <li><p>Ondergewicht: Minder dan 18.5</p></li>
         <li><p>Normaal gewicht: 18.5 - 24.9</p></li>
@@ -33,7 +33,8 @@
   </div>
 </section>
 <section class=bmi-b1>
-<div class='col'>
+  <div class='row'>
+    <div class='col'>
     <h3>The results are:</h3>
     <?php
       if (isset($_POST['bmi-calculator'])) {
@@ -49,5 +50,5 @@
 
 <!-- Footer -->
 <?php
-  //include 'php/footer.php';
+  //require_once 'php/footer.php';
 ?>

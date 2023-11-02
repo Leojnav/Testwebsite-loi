@@ -18,7 +18,7 @@ _END;
 ?>
 <!-- Navbar & Database + other includes -->
 <?php
-	include 'includes/header.php';
+	require_once 'includes/header.php';
 ?>
 
 <section class=home-b1>
@@ -44,5 +44,5 @@ for ($tafel= 8; $tafel <= 12; $tafel++) {
 
 <!-- Footer -->
 <?php
-  //include 'php/footer.php';
+  //require_once 'php/footer.php';
 ?>

@@ -96,25 +96,50 @@ echo $out;
     global $name; $name = ucfirst(strtolower($name));
     global $lastname;$lastname = ucfirst(strtolower($lastname));
   }
+  $object           = new Subscriber;
+  $object->name     = "Fred";
+  $object->password = "pword";
+  $object->phone    = "012 345 6789";
+  $object->email    = "fred@bloggs.com";
+  $object->display();
+  
   class User
   {
     public $name, $password;
 
     function save_user()
     {
-  	  echo "Save User code goes here";
+      echo "Save User code goes here";
     }
   }
-  $object = new User;
-  print_r($object); echo "<br>";
 
-  $object->name = "Joe";
-  $object->password = "mypass";
-  print_r($object); echo "<br>";
+  class Subscriber extends User
+  {
+    public $phone, $email;
 
-  $object->save_user();
-
-
+    function display()
+    {
+      echo "Name: "  . $this->name     . "<br>";
+      echo "Pass: "  . $this->password . "<br>";
+      echo "Phone: " . $this->phone    . "<br>";
+      echo "Email: " . $this->email;
+    }
+  }
+    class BoomVanPythagoras {
+    public function tekenBoom() {
+      $size = 200;
+      $image = imagecreatetruecolor($size, $size);
+      $pink = imagecolorallocate($image, 255, 105, 180); // pink
+      $white = imagecolorallocate($image, 255, 255, 255); // white
+      imagefill($image, 0, 0, $white);
+      imagefilledrectangle($image, 0, 0, $size - 1, $size - 1, $pink);
+      header('Content-Type: image/png');
+      imagepng($image);
+      imagedestroy($image);
+    }
+  }
+  $boomVanPythagoras = new BoomVanPythagoras();
+  $boomVanPythagoras->tekenBoom();
 ?>
 </section>
 

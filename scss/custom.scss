@@ -5,8 +5,8 @@ $wit: #fff;
 $txt: #E6EDF3;
 $button-txt: #C9D1D9;
 $meta-txt: #7D8590;
-$magenta: #FF1FFF;
-$roze: #B557F5;
+$magenta: #ff1fff;
+$roze: #b657f5;
 $zwart: #000;
 $achtergrond-zwart: #010409;
 $panel-zwart: #0d1117;
@@ -32,6 +32,9 @@ h1, h2, h3, h4, h5, h6, th {
 label, input, textarea, a, p{
 	font-family: 'Oxygen', sans-serif;
 	color: $txt;
+}
+hr {
+	border-bottom: 1px solid $border;
 }
 p {
 	font-size: 16px;
@@ -70,6 +73,9 @@ h3 {
 	}
 	.col1-4 {
 		flex-basis: 25%;
+	}
+	.col1-5 {
+		flex-basis: 20%;
 	}
 }
 section {
@@ -150,10 +156,17 @@ nav {
 .home-b1 {
 	width: 40vw;
 	margin: 50px auto;
-	.col {
+	.col1-5 {
 		padding-top: 25px;
-		width: 20%;
-    float: left;
+	}
+	.col {
+		text-align: center;
+		.square {
+			position: relative;
+			.triangle {
+				position: absolute;
+			}
+		}
 	}
 }
 /*BMI*/

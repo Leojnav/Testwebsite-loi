@@ -22,12 +22,12 @@
     </div>
     <div class='col2-3'>
       <ul>
-        <li><p>Ondergewicht: Minder dan 18.5</p></li>
-        <li><p>Normaal gewicht: 18.5 - 24.9</p></li>
-        <li><p>Overgewicht: 25 - 29.9</p></li>
-        <li><p>Obesitas klasse 1: 30 - 34.9</p></li>
-        <li><p>Obesitas klasse 2: 35 - 39.9</p></li>
-        <li><p>Ernstige obesitas (Obesitas klasse 3): 40 of hoger</p></li>
+        <li><p>Underweight: Less then 18.5</p></li>
+        <li><p>Normal weight: 18.5 - 24.9</p></li>
+        <li><p>Overweight: 25 - 29.9</p></li>
+        <li><p>Obesity (grade 1): 30 - 34.9</p></li>
+        <li><p>Obesity (grade 2): 35 - 39.9</p></li>
+        <li><p>Obesity (grade 3): 40 or higher</p></li>
       </ul>
     </div>
   </div>

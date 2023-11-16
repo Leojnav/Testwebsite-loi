@@ -48,24 +48,7 @@ _END;
     // $test = tree();
     // echo '<img src="' . $test . '" alt="Boom van Pythagoras">';
     echo '<img src="' . tree() . '" alt="Tree Image" />';
-    $string = "1 2 3 4 5 6 7 8 9 10 je? heet Hoe";
-    function reversestring($string) {
-      $string = explode(" ", $string);
-      $string = array_reverse($string);
-      $string = implode(" ", $string);
-      return $string;
-    }
-    echo reversestring($string);
-    
-    function factorial($number) {
-      if ($number < 2) {
-        return 1;
-      } else {
-        return ($number * factorial($number-1));
-      }
-    }
-    echo factorial(4);
-?>
+    ?>
   </div>
 </section>
 

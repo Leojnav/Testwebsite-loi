@@ -54,8 +54,25 @@ h3 {
 	line-height: 20px;
 	padding-bottom: 20px;
 }
-.row {
+.row80{
+	width: 80vw;
+	margin: 0 auto;
+} 
+.row60 {
+	width: 60vw;
+	margin: 0 auto;	
+} 
+.row40 {
+	width: 40vw;
+	margin: 0 auto;	
+}
+.row20 {
+	width: 20vw;
+	margin: 0 auto;	
+}
+.row, .row80, .row60, .row40, .row20{
 	display: flex;
+	flex-wrap: wrap;
 	.col .col1-2, .col1-3, .col2-3, .col1-4 {
 		display: flex;
 	}
@@ -76,6 +93,9 @@ h3 {
 	}
 	.col1-5 {
 		flex-basis: 20%;
+	}
+	.col1-15 {
+		flex-basis: 6.66%;
 	}
 }
 section {
@@ -158,9 +178,30 @@ nav {
 	margin: 50px auto;
 	.col1-5 {
 		padding-top: 25px;
+		text-align:center;
 	}
 	.col {
-		text-align: center;
+		.square {
+			position: relative;
+			.triangle {
+				position: absolute;
+			}
+		}
+	}
+}
+/*BUNNY*/
+.bunny-b1 {
+	.col1-5 {
+		padding-top: 25px;
+	}
+	.row {
+		justify-content: center;
+	}
+	.col1-15 {
+		padding-top: 25px;
+		text-align:center;
+	}
+	.col {
 		.square {
 			position: relative;
 			.triangle {

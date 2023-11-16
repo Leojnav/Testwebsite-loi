@@ -30,6 +30,8 @@
         <li><a href="index.php">Home</a></li>
         <li><a href="bmi-calculator.php">BMI Calculator</a></li>
         <li><a href="test.php">Experimentation lab</a></li>
+        <li><a href="bunny.php">Bunny army</a></li>
+        <li><a href="upload.php">Upload</a></li>
       </ul>
     </div>
   </nav>

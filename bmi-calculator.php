@@ -1,5 +1,5 @@
 <?php
-  $pagetitle= "Experimentation lab";
+  $pagetitle= "BMI calculator";
 ?>
 
 <!-- Navbar & Database + other includes -->

@@ -12,7 +12,6 @@ class Bunny {
   public $ears = "()_()";
   public $face;
   public $emotion;
-  public $emotion_txt;
   public $feet = '("")("")';
   public $emotion_counts = [];
   public $total= 0;
@@ -21,7 +20,7 @@ class Bunny {
       'Angry' => array("(!.!)"),
       'Happy' => array("(^.^)"),
       'Sad' => array("(~.~)"),
-      'Confussed' => array("(?.?)"),
+      'Confused' => array("(?.?)"),
       'Shy' => array("(>.<)"),
       'Scared' => array("(o.o)"),
       'Tired' => array("(-.-)"),
@@ -40,7 +39,6 @@ class Bunny {
     return array($this->face);
   }
   private function emotion_count() {
-    // Initialize the count for this emotion if not already set
     if (!isset($this->emotion_counts[$this->emotion])) {
       $this->emotion_counts[$this->emotion] = 0;
     }

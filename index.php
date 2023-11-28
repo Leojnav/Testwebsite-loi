@@ -51,7 +51,14 @@ _END;
     ?>
   </div>
 </section>
-
+<section class=home-b1>
+  <div class='col'>
+    <?php
+      $query  = "SELECT *";
+      $result = $pdo->query($query);
+    ?>
+  </div>
+</section>
 
 <!-- Footer -->
 <?php

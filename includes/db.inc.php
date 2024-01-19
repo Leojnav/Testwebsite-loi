@@ -13,7 +13,7 @@
 // }
 
 $host = 'localhost';    
-$data = 'testwebsite_loi'; 
+$data = 'temp_loi'; 
 $user = 'root'; 
 $pass = '';
 $chrs = 'utf8mb4';

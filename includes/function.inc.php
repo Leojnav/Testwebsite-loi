@@ -153,4 +153,28 @@ function tree($iterations = 5) {
 	return $imageData;
 }
 
+
+
+if (isset($_POST["submit-article"])) {
+	include 'db.inc.php';
+
+	$name = $_POST["name"];
+	$price = $_POST["price"];
+	$sql = "INSERT INTO article (name, price) VALUES (?,?)";
+	$stmt = $pdo->prepare($sql);
+try {
+    $stmt->execute([$name, $price]);
+    header("Location: ../article.php?error=none");
+		exit();
+} catch (PDOException $e) {
+    if ($e->getCode() == '23000') {
+        // Duplicate entry error
+        header("Location: ../article.php?error=duplicate");
+        exit();
+    } else {
+			header("Location: ../article.php?error=unknown");
+			exit();
+    }
+}
+}
 ?>

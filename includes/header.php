@@ -33,6 +33,7 @@
         <li><a href="test.php">Experimentation lab</a></li>
         <li><a href="bunny.php">Bunny army</a></li>
         <li><a href="upload.php">Upload</a></li>
+        <li><a href="article.php">Articles</a></li>
       </ul>
     </div>
   </nav>

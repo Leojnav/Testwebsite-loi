@@ -1,0 +1,20 @@
+<?php
+  require_once 'db.inc.php';
+if (isset($_GET['id'])) {
+  $id = $_GET['id'];
+  $sql = "DELETE FROM article WHERE id=?";
+  $stmt = $pdo->prepare($sql);
+  try {
+    $stmt->execute([$id]);
+    $rowCount = $stmt->rowCount();
+    if ($rowCount > 0) {
+      header("Location: ../article.php?error=delete");
+      exit();
+    } else {
+      header("Location: ../article.php?error=unknown");
+      exit();
+    }
+  } catch (PDOException $e) {
+    echo "Error: " . $e->getMessage();
+  }
+}

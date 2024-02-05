@@ -177,4 +177,151 @@ try {
     }
 }
 }
+
+
+
+//This function check if none of the field are empty in the signup form for the administrator
+function emptyInputDashboard($name, $lastname, $email, $username, $pwd, $pwdRepeat, $role)
+{
+    if (empty($name) || empty($lastname) || empty($email) || empty($username) || empty($pwd) || empty($pwdRepeat) || empty($role)) {
+        $result = true;
+    } else {
+        $result = false;
+    }
+    return $result;
+}
+//This function check if none of the field are empty in the signup form
+function emptyInputSignup($name, $lastname, $email, $username, $pwd, $pwdRepeat)
+{
+    if (empty($name) || empty($lastname) || empty($email) || empty($username) || empty($pwd) || empty($pwdRepeat)) {
+        $result = true;
+    } else {
+        $result = false;
+    }
+    return $result;
+}
+//This function check if the username is valid and not taken
+function invalidUid($username)
+{
+    if (!preg_match("/^[a-zA-Z0-9]*$/", $username)) {
+        $result = true;
+    } else {
+        $result = false;
+    }
+    return $result;
+}
+//This function check if the email is valid and not taken
+function invalidEmail($email)
+{
+    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        $result = true;
+    } else {
+        $result = false;
+    }
+    return $result;
+}
+//This function check if the password and password repeat are the same
+function pwdMatch($pwd, $pwdRepeat)
+{
+    if ($pwd !== $pwdRepeat) {
+        $result = true;
+    } else {
+        $result = false;
+    }
+    return $result;
+}
+//This function check if the username or email is already taken
+function uidExists($pdo, $username, $email)
+{
+  $sql = "SELECT * FROM users WHERE usersUID = :username OR usersEmail = :email;";
+  try {
+    $stmt = $pdo->prepare($sql);
+    $stmt->bindParam(':username', $username, PDO::PARAM_STR);
+    $stmt->bindParam(':email', $email, PDO::PARAM_STR);
+    $stmt->execute();
+
+    $row = $stmt->fetch(PDO::FETCH_ASSOC);
+
+    if ($row) {
+        return $row;
+    } else {
+        return false;
+    }
+  } catch (PDOException $e) {
+    if (isset($_POST["submit-signup"])) {
+        header("location: ../php/dashboard?error=stmtfailed");
+        exit();
+    }
+    if (isset($_POST["submit"])){
+        header("location: ../signUp.php?error=stmtfailed");
+        exit();
+    }
+  }
+}
+//This function inserts content from the signup form into the database
+function createUser($pdo, $name, $lastname, $email, $username, $pwd, $role, $date){
+  $sql = "INSERT INTO users (usersFirstName, usersLastname, usersEmail, usersUID, usersPWD, usersRole, timeCreated) VALUES (:name, :lastname, :email, :username, :pwd, :role, :date);";
+  try {
+    $stmt = $pdo->prepare($sql);
+    $pwdHashed = password_hash($pwd, PASSWORD_DEFAULT);
+    $stmt->bindParam(':name', $name, PDO::PARAM_STR);
+    $stmt->bindParam(':lastname', $lastname, PDO::PARAM_STR);
+    $stmt->bindParam(':email', $email, PDO::PARAM_STR);
+    $stmt->bindParam(':username', $username, PDO::PARAM_STR);
+    $stmt->bindParam(':pwd', $pwdHashed, PDO::PARAM_STR);
+    $stmt->bindParam(':role', $role, PDO::PARAM_STR);
+    $stmt->bindParam(':date', $date, PDO::PARAM_STR);
+    $stmt->execute();
+  } catch (PDOException $e) {
+    if (isset($_POST["submit-signup"])) {
+      header("location: ../php/dashboard?error=stmtfailed");
+      exit();
+    }
+    if (isset($_POST["submit"])){
+      header("location: ../signUp.php?error=stmtfailed");
+      exit();
+    }
+  }
+  if (isset($_POST["submit-signup"])) {
+    header("location: ../php/dashboard?error=stmtfailed");
+  }
+  if (isset($_POST["submit"])){
+    header("location: ../signUp.php?error=stmtfailed");
+  }
+  exit();
+}
+//This function check if none of the field are empty in the login form
+function emptyInputLogin($username, $pwd)
+{
+    if (empty($username) || empty($pwd)) {
+        $result = true;
+    } else {
+        $result = false;
+    }
+    return $result;
+}
+//This function check if the username and password are correct
+function loginUser($pdo, $username, $pwd)
+{
+    $uidExists = uidExists($pdo, $username, $username);
+
+    if ($uidExists === false) {
+        header("location: ../php/login?error=wronglogin");
+        exit();
+    }
+
+    $pwdHashed = $uidExists["usersPWD"];
+    $checkPwd = password_verify($pwd, $pwdHashed);
+
+    if ($checkPwd === false) {
+        header("location: ../php/login?error=wronglogin");
+        exit();
+    } else if ($checkPwd === true) {
+        session_start();
+        $_SESSION["userId"] = $uidExists["usersID"];
+        $_SESSION["userUid"] = $uidExists["usersUID"];
+        header("location: ../index.php");
+        exit();
+    }
+}
 ?>

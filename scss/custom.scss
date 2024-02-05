@@ -105,6 +105,9 @@ section {
     clear: both;
 	}
 }
+tbody {
+	vertical-align: top;
+}
 /*NAVIGATION*/
 
 /*HEADER*/
@@ -125,7 +128,7 @@ nav {
 		}
 	}
 	.navbar-right {
-		width: 50%;
+    width: 90%;
 		position: relative;
 		ul {
 			list-style-type: none;
@@ -213,7 +216,6 @@ nav {
 }
 /*BMI*/
 .bmi-b1 {
-	width: 40vw;
 	margin: 50px auto;
 	.col p {
 		line-height: 26px;

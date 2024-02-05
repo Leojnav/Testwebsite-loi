@@ -1,8 +1,8 @@
 <?php 
   require_once 'function.inc.php';
   require_once 'db.inc.php';
+  session_start();
 ?>
-<!DOCTYPE html>
 <html lang="en">
 <head>
   <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png">
@@ -26,15 +26,47 @@
     <div class="navbar-left">
       <img src="./images/Leo.png" alt="Logo">
     </div>
-    <div class=navbar-right>
+    <div class="navbar-right">
+      <?php
+        // The session that checks if the user is logged in
+        if (isset($_SESSION["userUid"])) {
+            $ses = $_SESSION["userUid"];
+      ?>
       <ul>
         <li><a href="index.php">Home</a></li>
         <li><a href="bmi-calculator.php">BMI Calculator</a></li>
+        <li><a href="article.php">Articles</a></li>
         <li><a href="test.php">Experimentation lab</a></li>
         <li><a href="bunny.php">Bunny army</a></li>
         <li><a href="upload.php">Upload</a></li>
-        <li><a href="article.php">Articles</a></li>
+        <?php
+            // Checks what rights the user has and displays the dashboard if the user is an admin
+            $sql = "SELECT * FROM users WHERE usersUID = :ses";
+            $stmt = $pdo->prepare($sql);
+            $stmt->bindParam(':ses', $ses, PDO::PARAM_STR);
+            $stmt->execute();
+            $row = $stmt->fetch(PDO::FETCH_ASSOC);
+
+            if ($row['usersRole'] == "admin") {
+                echo "<li><a href='dashboard.php
+                ' title='Control panel'>Dashboard</a></li>";
+            }
+        ?>
+        <li><a href="includes/logout.inc.php">Logout</a></li>
       </ul>
+      <?php
+        } else {
+      ?>
+      <ul>
+        <li><a href="index.php">Home</a></li>
+        <li><a href="bmi-calculator.php">BMI Calculator</a></li>
+        <li><a href="signUp.php">Sign up</a></li>
+        <li><a href="logIn.php">Log in</a></li>
+      </ul>
+      <?php
+        } 
+      ?> 
     </div>
   </nav>
-
+</body>
+</html>

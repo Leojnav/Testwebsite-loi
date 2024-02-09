@@ -36,6 +36,10 @@ label, input, textarea, a, p{
 hr {
 	border-bottom: 1px solid $border;
 }
+td, th {
+	padding: 5px 15px;
+	text-align: left;
+}
 p {
 	font-size: 16px;
 	line-height: 20px;
@@ -107,6 +111,19 @@ section {
 }
 tbody {
 	vertical-align: top;
+}
+.uk-button {
+	background-color: $button-zwart;
+	color: $button-txt;
+	border: 1px solid $border;
+	padding: 5px 25px;
+	border-radius: 6px;
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+	text-decoration: none;
+	&:hover { 
+		background-color: $button-hover;
+		border: 1px solid $button-border-hover;
+	}
 }
 /*NAVIGATION*/
 
@@ -223,8 +240,35 @@ nav {
 	.col .col1-3, .col2-3 {
 		align-items: center;
 	}
+	h1 {
+		text-align: center;
+	}
+	.info {
+		position: relative;
+		img{
+			width: 25px;
+			height: 25px;
+			margin-bottom: -7px;
+			object-fit: cover;
+		}
+		.info-block {
+			position: absolute;
+			top: 0;
+			right: -100%;	
+			padding: 20px;
+			border-width: 3px;
+			border-style: solid;
+			border-image: 
+				linear-gradient(
+					to bottom, 
+					$magenta, 
+					rgb(182, 87, 245, 0)
+				) 1 100%;
+		}
+	}
 	form {
 		padding-top: 25px;
+		text-align: center;
 		label span {
 			color: $magenta;
 		}

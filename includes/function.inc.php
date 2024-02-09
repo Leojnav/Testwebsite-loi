@@ -1,4 +1,5 @@
 <?php
+require_once 'db.inc.php';
 function longdate($timestamp)
 {
 	$temp = date("l F jS Y", $timestamp);
@@ -177,9 +178,50 @@ try {
     }
 }
 }
+$tableName = 'users';
+$tableExists = false;
 
-
-
+try {
+  // Check if table exists
+  $query = $pdo->query("SHOW TABLES LIKE '{$tableName}'");
+  if ($query->rowCount() > 0) {
+      $tableExists = true;
+  }
+  
+  // If table exists, check if all columns exist and match the specified definitions
+  if ($tableExists === false) {
+		recreateTable($pdo, $tableName);
+		insertdata($pdo);
+		echo "Table created";
+	} 
+//  else {
+// 	echo "Table already exists";
+// }
+} catch (PDOException $e) {
+	echo "Error: " . $e->getMessage();
+}
+		
+// User table does not exist, create it
+function recreateTable($pdo, $tableName) {
+	$createTableSQL = "CREATE TABLE `{$tableName}` (
+			`usersID` int(11) NOT NULL,
+			`usersFirstName` varchar(32) NOT NULL,
+			`usersLastname` varchar(32) NOT NULL,
+			`usersEmail` varchar(32) NOT NULL,
+			`usersPWD` varchar(64) NOT NULL,
+			`usersUID` varchar(32) NOT NULL,
+			`usersRole` varchar(32) NOT NULL,
+			`timeCreated` datetime DEFAULT NULL
+	) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;";
+	$pdo->exec($createTableSQL);
+}
+function insertdata($pdo) {
+	$sql = 'INSERT INTO `users` (`usersID`, `usersFirstName`, `usersLastname`, `usersEmail`, `usersPWD`, `usersUID`, `usersRole`, `timeCreated`) VALUES ' .
+	"(13, 'test', 'test', 'test@test.nl', '\$2y\$10\$597InkN860VRm50rmV8H/.Vc73j6UGN5hZse67qXrwIljdoETGerO', 'test', 'user', '2024-01-26 15:01:07'), " .
+	"(17, 'joel', 'joel', 'joel@joel.nl', '\$2y\$10\$zs0l2xTSUlPkH9wFtAZig.IDvtYZ9khkdQKLj6o7Gtpuhn1djDu12', 'joel', 'admin', '2024-01-26 15:29:53'), " .
+	"(20, 'test2', 'test2', 'test@test.nl', '\$2y\$10\$iy10/QxLlTQHzBsD2ooDg.K8.djM1wefj2FwpWg0N.zUgzTS8FT9O', 'test23', 'admin', '2024-01-26 15:01:07');";
+	$pdo->exec($sql);
+}
 //This function check if none of the field are empty in the signup form for the administrator
 function emptyInputDashboard($name, $lastname, $email, $username, $pwd, $pwdRepeat, $role)
 {
@@ -273,19 +315,19 @@ function createUser($pdo, $name, $lastname, $email, $username, $pwd, $role, $dat
     $stmt->bindParam(':date', $date, PDO::PARAM_STR);
     $stmt->execute();
   } catch (PDOException $e) {
-    if (isset($_POST["submit-signup"])) {
-      header("location: ../php/dashboard?error=stmtfailed");
+    if (isset($_POST["submit-adduser"])) {
+      header("location: ../dashboard.php?error=stmtfailed");
       exit();
     }
-    if (isset($_POST["submit"])){
+    if (isset($_POST["submit-signup"])){
       header("location: ../signUp.php?error=stmtfailed");
       exit();
     }
   }
-  if (isset($_POST["submit-signup"])) {
-    header("location: ../php/dashboard?error=stmtfailed");
+  if (isset($_POST["submit-adduser"])) {
+    header("location: ../dashboard.php");
   }
-  if (isset($_POST["submit"])){
+  if (isset($_POST["submit-signup"])){
     header("location: ../signUp.php?error=stmtfailed");
   }
   exit();
@@ -306,7 +348,7 @@ function loginUser($pdo, $username, $pwd)
     $uidExists = uidExists($pdo, $username, $username);
 
     if ($uidExists === false) {
-        header("location: ../php/login?error=wronglogin");
+        header("location: /logIn.php?error=wronglogin");
         exit();
     }
 
@@ -314,10 +356,11 @@ function loginUser($pdo, $username, $pwd)
     $checkPwd = password_verify($pwd, $pwdHashed);
 
     if ($checkPwd === false) {
-        header("location: ../php/login?error=wronglogin");
+        header("location: /logIn.php?error=wronglogin");
         exit();
     } else if ($checkPwd === true) {
         session_start();
+				$_SESSION["loggedin"] = true; // Indicate that the user is logged in.
         $_SESSION["userId"] = $uidExists["usersID"];
         $_SESSION["userUid"] = $uidExists["usersUID"];
         header("location: ../index.php");

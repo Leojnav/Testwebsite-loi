@@ -8,9 +8,9 @@
 ?>
 
 <section class=bmi-b1>
+  <div class='row40'>
   <h1>Body Mass Index (BMI) calculator</h1>
   <p>To calculate your BMI you can either put in both your weight and height or only your height.</p>
-  <div class='row'>
     <div class='col1-3'>
       <form action="" method="post">
         <label for="weight">Weight in kg:</label><br>
@@ -33,7 +33,7 @@
   </div>
 </section>
 <section class=bmi-b1>
-  <div class='row'>
+  <div class='row40'>
     <div class='col'>
     <h3>The results are:</h3>
     <?php

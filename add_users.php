@@ -1,5 +1,9 @@
 <?php
-  $pagetitle= "Sign up";
+  $pagetitle= "Add user";
+  if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
+    header('Location: login.php');
+    exit;
+}
 ?>
 
 <!-- Navbar & Database + other includes -->
@@ -8,7 +12,7 @@
 ?>
 
 <section class=bmi-b1>
-  <h1>Sign up</h1>
+  <h1>Add user</h1>
 	<form action="includes/signup.inc.php" method="post">
   <div class='row40'>
     <div class='col1-2'>
@@ -25,10 +29,10 @@
 				<input type="varchar" name="usersUID" placeholder="Username..."><br>
 			<label>Password</label>
 			<!-- Code  to show what is needed for a correct password -->
-			<div class="info"style="cursor:pointer;" onclick="clickToShow();">
+			<div style="cursor:pointer;" onclick="clickToShow();">
 				<input type="password" id="usersPWD" name="usersPWD" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" placeholder="Password...">
-				<img src="./images/info.png" alt="Info">
-				<div id="clickToShow" class="info-block" hidden> 
+				<!-- <img src="../images/info.png" alt="Info"> -->
+				<div class="text-block" id="clickToShow" hidden> 
 					<h3>Password must contain the following:</h3>
 					<p>Atleast 1 <b>lowercase</b> letter</p>
 					<p>Atleast 1 <b>capitalized</b> letter</p>
@@ -58,17 +62,18 @@
 				} else if ($_GET["error"] == "stmtfailed") {
 					echo "<p class='errormassage'>Something went wrong, try again next time!</p>";
 				} else if ($_GET["error"] == "none") {
-					echo "<p class='errormassage'>You are registered!</p>";
+					echo "<p class='errormassage'>You add a user!</p>";
 				}
 			}
 			?>
 		</div>
 		<div class="col">
-			<button class="uk-button" type="submit" name="submit-signup" title="Register">Register</button>
+			<button class="uk-button" type="submit" name="submit-adduser" title="Add user">Add user</button>
 		</div>
 	</div>
 	</form>
 </section>
+
 
 <!-- Footer -->
 <?php

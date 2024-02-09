@@ -1,5 +1,5 @@
 <?php
-  $pagetitle= "Create Article";
+  $pagetitle= "Edit Article";
 ?>
 <!-- Navbar & Database + other includes -->
 <?php

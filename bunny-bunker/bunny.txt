@@ -1,0 +1,28 @@
+Iteration #1
+
+Angry: 3
+Happy: 6
+Sad: 2
+Confused: 3
+Shy: 1
+Scared: 4
+Tired: 7
+Shocked: 4
+Greed: 0
+
+Total amount of bunny's: 30
+
+Iteration #1
+
+Angry: 3
+Happy: 3
+Sad: 5
+Confused: 3
+Shy: 4
+Scared: 4
+Tired: 2
+Shocked: 4
+Greed: 2
+
+Total amount of bunny's: 30
+

@@ -30,7 +30,7 @@ if (isset($_POST["submit-edit"])) {
     header("location: ../dashboard.php?error=nomatchfound");
     exit();
   }
-  if (uidExists($conn, $username, $email) !== false) {
+  if (uidExists($pdo, $username, $email) !== false) {
     header("location: ../dashboard.php?error=usernametaken");
     exit();
   }

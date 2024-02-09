@@ -10,7 +10,7 @@
 <section class=bmi-b1>
   <h1>Login</h1>
 	<form action="includes/login.inc.php" method="post">
-  <div class='row'>
+  <div class='row20'>
     <div class='col'>
 			<label>Email Address or Username</label><br>
 			<input type="text" name="usersUID" placeholder="Email/Username..."><br>
@@ -27,7 +27,7 @@
 			}
 			?>
 			<div class="col3">
-				<button type="submit" name="submit" title="Login">Login</button>
+				<button class="uk-button"type="submit" name="submit" title="Login">Login</button>
 			</div>
 				</form>
 		</div>

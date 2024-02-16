@@ -5,6 +5,10 @@
 <!-- Navbar & Database + other includes -->
 <?php
 	require_once 'includes/header.php';
+  if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
+    header('Location: login.php');
+    exit;
+}
 ?>
 <section class=bunny-b1>
 <?php

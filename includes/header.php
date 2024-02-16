@@ -1,7 +1,7 @@
 <?php 
   require_once 'function.inc.php';
   require_once 'db.inc.php';
-  session_start();
+  session_start();  
 ?>
 <html lang="en">
 <head>
@@ -30,8 +30,8 @@
     <div class="navbar-right">
       <?php
         // The session that checks if the user is logged in
-        if (isset($_SESSION["userUid"])) {
-            $ses = $_SESSION["userUid"];
+        if (isset($_SESSION["userId"])) {
+            $ses = $_SESSION["userId"];
       ?>
       <ul>
         <li><a href="index.php">Home</a></li>
@@ -42,12 +42,14 @@
         <li><a href="upload.php">Upload</a></li>
         <?php
             // Checks what rights the user has and displays the dashboard if the user is an admin
-            $sql = "SELECT * FROM users WHERE usersUID = :ses";
-            $stmt = $pdo->prepare($sql);
-            $stmt->bindParam(':ses', $ses, PDO::PARAM_STR);
-            $stmt->execute();
+            $sql = "SELECT * FROM users WHERE usersID = :ses";
+            $stmt = $pdo->prepare($sql);           
+            $stmt->bindParam(':ses', $ses, PDO::PARAM_STR);            
+            $stmt->execute();      
             $row = $stmt->fetch(PDO::FETCH_ASSOC);
-
+            if ($row['usersRole'] == "user") {
+                echo "<li><a href='change_password.php?usersID=".$row["usersID"]."'>Change password</a></li>";
+            } else
             if ($row['usersRole'] == "admin") {
                 echo "<li><a href='dashboard.php
                 ' title='Control panel'>Dashboard</a></li>";

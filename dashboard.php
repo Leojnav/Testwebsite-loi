@@ -1,6 +1,10 @@
 <?php
   $pagetitle= "Dashboard";
   require_once 'includes/header.php';
+  if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
+    header('Location: login.php');
+    exit;
+  }
 ?>
 
 <section class=bmi-b1>

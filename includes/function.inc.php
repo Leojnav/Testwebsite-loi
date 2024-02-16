@@ -204,7 +204,7 @@ try {
 // User table does not exist, create it
 function recreateTable($pdo, $tableName) {
 	$createTableSQL = "CREATE TABLE `{$tableName}` (
-			`usersID` int(11) NOT NULL,
+			`usersID` INT AUTO_INCREMENT PRIMARY KEY,
 			`usersFirstName` varchar(32) NOT NULL,
 			`usersLastname` varchar(32) NOT NULL,
 			`usersEmail` varchar(32) NOT NULL,
@@ -214,12 +214,13 @@ function recreateTable($pdo, $tableName) {
 			`timeCreated` datetime DEFAULT NULL
 	) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;";
 	$pdo->exec($createTableSQL);
+	$alterTableSQL = "ALTER TABLE `{$tableName}` AUTO_INCREMENT=3;";
+	$pdo->exec($alterTableSQL);
 }
 function insertdata($pdo) {
 	$sql = 'INSERT INTO `users` (`usersID`, `usersFirstName`, `usersLastname`, `usersEmail`, `usersPWD`, `usersUID`, `usersRole`, `timeCreated`) VALUES ' .
-	"(13, 'test', 'test', 'test@test.nl', '\$2y\$10\$597InkN860VRm50rmV8H/.Vc73j6UGN5hZse67qXrwIljdoETGerO', 'test', 'user', '2024-01-26 15:01:07'), " .
-	"(17, 'joel', 'joel', 'joel@joel.nl', '\$2y\$10\$zs0l2xTSUlPkH9wFtAZig.IDvtYZ9khkdQKLj6o7Gtpuhn1djDu12', 'joel', 'admin', '2024-01-26 15:29:53'), " .
-	"(20, 'test2', 'test2', 'test@test.nl', '\$2y\$10\$iy10/QxLlTQHzBsD2ooDg.K8.djM1wefj2FwpWg0N.zUgzTS8FT9O', 'test23', 'admin', '2024-01-26 15:01:07');";
+	"(1, 'test', 'test', 'test@test.nl', '\$2y\$10\$597InkN860VRm50rmV8H/.Vc73j6UGN5hZse67qXrwIljdoETGerO', 'test', 'user', '2024-01-26 15:01:07'), " .
+	"(2, 'joel', 'joel', 'joel@joel.nl', '\$2y\$10\$zs0l2xTSUlPkH9wFtAZig.IDvtYZ9khkdQKLj6o7Gtpuhn1djDu12', 'joel', 'admin', '2024-01-26 15:29:53');";
 	$pdo->exec($sql);
 }
 //This function check if none of the field are empty in the signup form for the administrator
@@ -328,7 +329,7 @@ function createUser($pdo, $name, $lastname, $email, $username, $pwd, $role, $dat
     header("location: ../dashboard.php");
   }
   if (isset($_POST["submit-signup"])){
-    header("location: ../signUp.php?error=stmtfailed");
+    header("location: ../signUp.php?error=none");
   }
   exit();
 }
@@ -348,7 +349,7 @@ function loginUser($pdo, $username, $pwd)
     $uidExists = uidExists($pdo, $username, $username);
 
     if ($uidExists === false) {
-        header("location: /logIn.php?error=wronglogin");
+        header("location: ./logIn.php?error=wronglogin");
         exit();
     }
 
@@ -362,7 +363,7 @@ function loginUser($pdo, $username, $pwd)
         session_start();
 				$_SESSION["loggedin"] = true; // Indicate that the user is logged in.
         $_SESSION["userId"] = $uidExists["usersID"];
-        $_SESSION["userUid"] = $uidExists["usersUID"];
+        $_SESSION["userUid"] = $uidExists["usersUID"];;
         header("location: ../index.php");
         exit();
     }

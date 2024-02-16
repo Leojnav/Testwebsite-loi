@@ -1,10 +1,15 @@
 <?php
   $pagetitle= "Log in";
+	error_reporting(0);
 ?>
 
 <!-- Navbar & Database + other includes -->
 <?php
 	require_once 'includes/header.php';
+	if (isset($_SESSION['loggedin']) || $_SESSION['loggedin'] == true) {
+    header('Location: index.php');
+    exit;
+  }
 ?>
 
 <section class=bmi-b1>

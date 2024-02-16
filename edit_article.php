@@ -4,6 +4,10 @@
 <!-- Navbar & Database + other includes -->
 <?php
 	require_once 'includes/header.php';
+  if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
+    header('Location: login.php');
+    exit;
+}
   $id = $_GET['id'];
   if (count($_POST) > 0) {
     $sql = "UPDATE article SET name=?, price=? WHERE id=?";

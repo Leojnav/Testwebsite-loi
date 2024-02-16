@@ -19,7 +19,17 @@ _END;
 <!-- Navbar & Database + other includes -->
 <?php
 	require_once 'includes/header.php';
+  if(isset($_SESSION["userUid"])) {
+    $name = $_SESSION["userUid"];
+    if (!isset($_SESSION['welcome_message_displayed'])) {
+      $_SESSION['welcome_message_displayed'] = true;
+  ?>
+  <p class="post-created"style="text-align:center;">Welcome <?php echo $name?></p>
+  <?php
+  }} else {
+  }
 ?>
+ 
 <section class=home-b1>
   <h1>
     <?php echo $pagetitle; ?>

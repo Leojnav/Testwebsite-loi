@@ -43,7 +43,7 @@ else if (isset($_POST["submit-adduser"])) {
     $username = $_POST["usersUID"];
     $pwd = $_POST["usersPWD"];
     $pwdRepeat = $_POST["pwdrepeat"];
-    $role = "user";
+    $role = $_POST["usersRole"];
     $date = date_create()->format('Y-m-d H:i:s');
     
     require_once 'db.inc.php';

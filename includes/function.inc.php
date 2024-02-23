@@ -186,7 +186,9 @@ try {
   $query = $pdo->query("SHOW TABLES LIKE '{$tableName}'");
   if ($query->rowCount() > 0) {
       $tableExists = true;
-  }
+  } else {
+			$tableExists = false;
+	}
   
   // If table exists, check if all columns exist and match the specified definitions
   if ($tableExists === false) {
@@ -361,7 +363,7 @@ function loginUser($pdo, $username, $pwd)
         exit();
     } else if ($checkPwd === true) {
         session_start();
-				$_SESSION["loggedin"] = true; // Indicate that the user is logged in.
+				$_SESSION["loggedin"] = true; 
         $_SESSION["userId"] = $uidExists["usersID"];
         $_SESSION["userUid"] = $uidExists["usersUID"];;
         header("location: ../index.php");

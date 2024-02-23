@@ -71,7 +71,7 @@
         <tr>
           <td>
             <!-- This is the beginning of the form content -->
-            <form action="" method="post" style="margin-right: 50px; padding-top:0px;">
+            <form action="" method="post" style="padding-top:0px;">
               <label>Firstname</label><br>
                 <input type="text" name="usersFirstName" value="<?php echo $row['usersFirstName'] ?? ''; ?>"><br>
               <label>Lastname</label><br>

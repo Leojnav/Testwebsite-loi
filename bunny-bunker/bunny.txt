@@ -26,3 +26,17 @@ Greed: 2
 
 Total amount of bunny's: 30
 
+Iteration #1
+
+Angry: 2
+Happy: 4
+Sad: 4
+Confused: 1
+Shy: 5
+Scared: 2
+Tired: 8
+Shocked: 1
+Greed: 3
+
+Total amount of bunny's: 30
+

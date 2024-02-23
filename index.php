@@ -24,7 +24,7 @@ _END;
     if (!isset($_SESSION['welcome_message_displayed'])) {
       $_SESSION['welcome_message_displayed'] = true;
   ?>
-  <p class="post-created"style="text-align:center;">Welcome <?php echo $name?></p>
+  <p class="post-created"style="text-align:center;">Welcome <?php echo $name?>,<br> Je bent ingelogd</p>
   <?php
   }} else {
   }

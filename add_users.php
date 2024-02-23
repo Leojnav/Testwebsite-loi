@@ -1,14 +1,14 @@
 <?php
   $pagetitle= "Add user";
-  if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
-    header('Location: login.php');
-    exit;
-}
 ?>
 
 <!-- Navbar & Database + other includes -->
 <?php
 	require_once 'includes/header.php';
+	if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
+    header('Location: login.php');
+    exit;
+  }
 ?>
 
 <section class=bmi-b1>
@@ -41,7 +41,12 @@
 				</div>
 			</div>	
 			<label>Repeat password</label><br>
-				<input type="password" name="pwdrepeat" placeholder="Repeat password...">
+				<input type="password" name="pwdrepeat" placeholder="Repeat password..."><br>
+			<label>User Role</label><br>
+        <select class="uk-button" style="margin-top: 5px;" name="usersRole">
+        	<option value="klant">Klant</option>
+        	<option value="admin">Admin</option>
+        </select><br>
 		</div>
 	</div>
 	<div class='row'>
